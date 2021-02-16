@@ -19,6 +19,9 @@ namespace ppm {
         delete[] m_data;
     }
 
+    uint32_t Image::get_width() { return m_width; }
+    uint32_t Image::get_height() { return m_height; }
+
     void Image::draw_pixel(uint32_t x, uint32_t y, const Pixel& color) {
         m_data[y][x] = color;
     }
