@@ -20,4 +20,9 @@ Let's create a PPM image, make all the pixels red, and save it to a file.
 
 	ppm::Image image(256, 256); // 256x256 image
 	image.clear(ppm::Pixel(255, 0, 0)); // 255 0 0 is RGB for the color RED.
+    // Optionally you can call the ppm::Image constructor like this:
+    //
+    // ppm::Image image(256, 256, ppm::Pixel(255, 0, 0));
+    //
+    // This way will also prevent a lot of unnecessary allocations.
 	image.save("cool_image.ppm"); // save to specified filename

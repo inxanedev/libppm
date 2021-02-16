@@ -8,7 +8,11 @@ namespace ppm {
     public:
         // Constructs a new PPMImage with the specified dimensions.
         Image(uint32_t width, uint32_t height);
+<<<<<<< HEAD
         Image(uint32_t width, uint32_t height, const Pixel& color);
+=======
+        ~Image();
+>>>>>>> 28920560a7a8df2f3ca9545d6c8d952efd433b56
 
         uint32_t get_width();
         uint32_t get_height();
@@ -20,8 +24,12 @@ namespace ppm {
     private:
         uint32_t m_width;
         uint32_t m_height;
+<<<<<<< HEAD
         std::vector<std::vector<Pixel>> m_data;
     
         void _alloc_data(uint32_t width, uint32_t height, uint32_t r, uint32_t g, uint32_t b);
+=======
+        Pixel** m_data;
+>>>>>>> 28920560a7a8df2f3ca9545d6c8d952efd433b56
     };
 }
