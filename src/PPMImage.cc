@@ -2,22 +2,19 @@
 #include "PPMImage.h"
 #include <cstdint>
 #include <fstream>
+#include <vector>
 
 namespace ppm {
-    Image::Image(uint32_t width, uint32_t height) {
-        m_width = width;
-        m_height = height;
-
-        m_data = new Pixel*[height];
-        for (int i = 0; i < height; i++)
-            m_data[i] = new Pixel[width];
+    Image::Image(uint32_t width, uint32_t height) : m_width(width), m_height(height) {
+        _alloc_data(width, height, 0, 0, 0);
+    }
+    
+    Image::Image(uint32_t width, uint32_t height, const Pixel& color) : m_width(width), m_height(height) {
+        _alloc_data(width, height, color.r, color.g, color.b);
     }
 
-    Image::~Image() {
-        for (int i = 0; i < m_height; i++)
-            delete[] m_data[i];
-        delete[] m_data;
-    }
+    uint32_t Image::get_width() { return m_width; }
+    uint32_t Image::get_height() { return m_height; }
 
     void Image::draw_pixel(uint32_t x, uint32_t y, const Pixel& color) {
         m_data[y][x] = color;
@@ -42,5 +39,14 @@ namespace ppm {
             }
         }
         file.close();
+    }
+    
+    void Image::_alloc_data(uint32_t width, uint32_t height, uint32_t r, uint32_t g, uint32_t b) {
+        m_data.reserve(height);
+        for (int y = 0; y < height; y++) {
+            m_data[y].reserve(width);
+            for (int x = 0; x < width; x++)
+                m_data[y].emplace_back(r, g, b);
+        }
     }
 }
