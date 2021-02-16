@@ -1,4 +1,4 @@
-#include "PPMPixel.h"
+#include "PPMColor.h"
 #include "PPMImage.h"
 #include <cstdint>
 #include <fstream>
@@ -9,18 +9,18 @@ namespace ppm {
         _alloc_data(width, height, 0, 0, 0);
     }
     
-    Image::Image(uint32_t width, uint32_t height, const Pixel& color) : m_width(width), m_height(height) {
+    Image::Image(uint32_t width, uint32_t height, const Color& color) : m_width(width), m_height(height) {
         _alloc_data(width, height, color.r, color.g, color.b);
     }
 
     uint32_t Image::get_width() { return m_width; }
     uint32_t Image::get_height() { return m_height; }
 
-    void Image::draw_pixel(uint32_t x, uint32_t y, const Pixel& color) {
+    void Image::draw_pixel(uint32_t x, uint32_t y, const Color& color) {
         m_data[y][x] = color;
     }
 
-    void Image::clear(const Pixel& color) {
+    void Image::clear(const Color& color) {
         for (int y = 0; y < m_height; y++) {
             for (int x = 0; x < m_width; x++) {
                 draw_pixel(x, y, color);

@@ -5,7 +5,7 @@ set (CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_library(ppm STATIC
 	"src/PPMImage.cc"
-	"src/PPMPixel.cc"
+    "src/PPMColor.cc"
 )
 
 target_include_directories(ppm PRIVATE

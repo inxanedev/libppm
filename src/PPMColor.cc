@@ -1,6 +1,6 @@
-#include "PPMPixel.h"
+#include "PPMColor.h"
 namespace ppm {
-    Pixel::Pixel(uint32_t r, uint32_t g, uint32_t b) {
+    Color::Color(uint32_t r, uint32_t g, uint32_t b) {
         this->r = r;
         this->g = g;
         this->b = b;
