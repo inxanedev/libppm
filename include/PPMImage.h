@@ -9,7 +9,6 @@ namespace ppm {
         // Constructs a new PPMImage with the specified dimensions.
         Image(uint32_t width, uint32_t height);
         Image(uint32_t width, uint32_t height, const Pixel& color);
-        ~Image();
 
         uint32_t get_width();
         uint32_t get_height();
